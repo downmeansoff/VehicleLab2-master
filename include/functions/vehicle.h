@@ -52,3 +52,13 @@ using namespace std;
 		Vehicle operator[](int index) const;
 		VehicleList& operator=(const VehicleList& other);
 
+		void swap(VehicleList& rhs) noexcept;
+		void insert(int index, Vehicle f);
+		void remove(int index);
+		int size() const;
+		Vehicle& highest_transport_tax(VehicleList& t, float s); 
+	};
+
+
+	std::ostream& operator<<(std::ostream& stream, VehicleList& vList);
+	std::ostream& operator<<(std::ostream& stream, Vehicle& veh);
