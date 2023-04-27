@@ -3,7 +3,29 @@
 
 using namespace std;
 
-
+ostream& operator<<(std::ostream& stream, Vehicle& veh) {
+	stream << "\tType of Vehicle: ";
+	switch (veh.get_type()) {
+	case 0:
+		stream << "Car\n";
+		break;
+	case 1:
+		stream << "Truck\n";
+		break;
+	case 2:
+		stream << "Motocycle\n";
+	}
+	switch (veh.get_type()) {
+	case CAR:
+	case MOTOCYCLE:
+		stream << "\tModel: " << veh.get_model() << "\n\tVolume of Engine: " << veh.get_volume_of_engine() << std::endl;
+		break;
+	case TRUCK:
+		stream << "\tModel: " << veh.get_model() << "\n\tVolume of Engine: " << veh.get_volume_of_engine() <<
+			"\n\tTonnage: " << veh.get_tonnage() << std::endl;
+		break;
+	}
+	return stream;
 }
 ostream& operator<<(std::ostream& stream, VehicleList& vList) {
 	for (int i = 0; i < vList.size(); ++i) {
