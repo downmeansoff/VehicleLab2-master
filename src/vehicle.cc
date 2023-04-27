@@ -126,7 +126,36 @@ VehicleList::~VehicleList() {
 	delete[] _vehicle;
 }
 
+void VehicleList::insert(int index, Vehicle f) {
+	if (index < 0 || index > _size) throw runtime_error("error1");
+	++_size;
+	
+	Vehicle** vehicle_tmp = new Vehicle*[_size];
+	for (int i = 0; i < index; ++i) {
+		vehicle_tmp[i] = new Vehicle(*_vehicle[i]);
+	}
+	for (int i = _size - 1; i > index; i--) {
+		vehicle_tmp[i] = new Vehicle(*_vehicle[i - 1]);
+	}
+	vehicle_tmp[index] = new Vehicle(f);
+	std::swap(_vehicle, vehicle_tmp);
+}
 
+void VehicleList::remove(int index) {
+	if (index >= _size || index < 0) {
+		throw runtime_error("error1");
+	}
+	--_size;
+
+	Vehicle** vehicle_tmp = new Vehicle *[_size]();
+	for (int i = 0; i < index; ++i) {
+		vehicle_tmp[i] = new Vehicle(*_vehicle[i]);
+	}
+	for (int i = index; i < _size; ++i) {
+		vehicle_tmp[i] = new Vehicle(*_vehicle[i + 1]);
+	}
+	std::swap(_vehicle, vehicle_tmp);
+}
 
 void VehicleList::swap(VehicleList& rhs) noexcept {
 	std::swap(_vehicle, rhs._vehicle);
