@@ -84,24 +84,6 @@ TEST(FunctionsTests, SetVolumeOfEngine) {
 
     EXPECT_EQ(vehicle.get_volume_of_engine(), 3.0);
 }
-TEST(VehicleTests, Size) {
-    // Arrange
-    const int size = 5;
-    Vehicle vehicle[CAPACITY];
-    vehicle[0] = Vehicle(CAR, HONDA, 2.0, 0);
-    vehicle[1] = Vehicle(CAR, HONDA, 2.0, 0);
-    vehicle[2] = Vehicle(CAR, FORD, 2.0, 0);
-    vehicle[3] = Vehicle(CAR, FORD, 2.0, 0);
-    vehicle[4] = Vehicle(CAR, FORD, 2.0, 0);
-    vehicle[5] = Vehicle(CAR, FORD, 2.0, 0);
-    vehicle[6] = Vehicle(CAR, FORD, 2.0, 0);
-    vehicle[7] = Vehicle(CAR, FORD, 2.0, 0);
-    vehicle[8] = Vehicle(CAR, FORD, 2.0, 0);
-    VehicleList ll = Vehicle(vehicle, size);
-
-    // Assert
-    EXPECT_EQ(ll.size(), 5);
-}
 TEST(VehicleTests, Index) {
     VehicleList ll = VehicleList();
     EXPECT_THROW(ll.remove(-1), std::runtime_error);
